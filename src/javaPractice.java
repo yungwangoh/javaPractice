@@ -1,47 +1,37 @@
 import java.util.Scanner;
 
-class Circle {
-    int x, y;
-    float rad;
+class Point {
+    float x, y;
 
-    void print() {
-        System.out.println("[CIRCLE] ("+ x +", "+ y +") r = " +rad);
-    }
-}
-
-class Ractangle {
-    int x, y;
-    int width, height;
-
-    protected Ractangle() {}
-
-    public Ractangle(int width, int height) {
-        this();
-        this.width = width;
-        this.height = height;
+    public Point(float x, float y) {
+        this.x = x;
+        this.y = y;
     }
 
-    int getArea() {
-        return width * height;
+    float getInstance(Point a, Point b) {
+        float d = (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
+        return d;
+    }
+
+    float getLength() {
+        return getInstance(this, new Point(0,0));
+    }
+
+    boolean isNearer(Point in) {
+        return(getLength() < in.getLength());
     }
 
     void print() {
-        System.out.println("getArea() = " + getArea());
+        System.out.println("[POINT] ("+ x + ", "+ y +")");
     }
 }
-
 public class javaPractice {
     public static void main(String[] args) {
-        Circle circle = new Circle();
-        circle.x = 10;
-        circle.y = 20;
-        circle.rad = 4.0f;
-        circle.print();
 
-        Ractangle r = new Ractangle(200, 200);
+        MyColorString a = new MyColorString("sejong", "BLACK");
+        a.print();
+        a.colorPrint();
 
-        r.getArea();
-        r.print();
 
     }
 }
